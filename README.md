@@ -36,3 +36,53 @@ SmartOrders is a complete microservices-based architecture built using Spring Bo
 
 ## 📁 Folder Structure
 
+
+# 🛒 SmartOrders Microservices Architecture
+
+SmartOrders is a **Java-based microservices project** built using Spring Boot 3, Spring Cloud 2025.x, Docker, and JWT. This system demonstrates how to architect and deploy a full-stack enterprise-grade application using modern microservice patterns.
+
+---
+
+## 🌐 Architecture Overview
+
+```text
+                                +----------------+
+                                |  Postman / UI  |
+                                +--------+-------+
+                                         |
+                                  (JWT Auth Header)
+                                         |
+                                +--------v-------+
+                                |   API Gateway  |
+                                | (Spring Cloud) |
+                                +--------+-------+
+             +---------------------------+--------------------------+
+             |            |               |               |         |
+     +-------v-----+ +-----v------+ +------v-------+ +-----v------+ 
+     | AuthService | | OrderService | | UserService | | Inventory  |
+     +-------------+ +--------------+ +--------------+ +-----------+
+             \            |               |               /
+              \           |         +-----v------+        /
+               +----------+---------| Config     |<------+
+                          |         |  Server    |       |
+                          +---------> Git Config |       |
+                                    +------------+       |
+                                    +---------------------+
+                                    |  Discovery Server    |
+                                    |     (Eureka)         |
+                                    +----------------------+
+```
+
+...
+
+## 👨‍💻 Author
+
+**Vijay Shinde**  
+Senior Software Engineer | Java + Spring + Cloud Enthusiast  
+📧 [Your Email]  
+🌐 GitHub: [github.com/your-profile]  
+🔗 LinkedIn: [linkedin.com/in/your-profile]
+
+## 📝 License
+
+This project is open source and licensed under the [MIT License](LICENSE).
