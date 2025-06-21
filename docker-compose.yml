@@ -1,0 +1,68 @@
+version: '3.8'
+
+services:
+
+  discovery-server:
+    build: ./discovery-server
+    ports:
+      - "8761:8761"
+    networks:
+      - microservice-net
+
+  config-server:
+    build: ./config-server
+    ports:
+      - "9003:9003"
+    depends_on:
+      - discovery-server
+    networks:
+      - microservice-net
+
+  api-gateway:
+    build: ./api-gateway
+    ports:
+      - "8080:8080"
+    depends_on:
+      - discovery-server
+      - config-server
+    networks:
+      - microservice-net
+
+  auth-service:
+    build: ./auth-service
+    ports:
+      - "9005:9005"
+    networks:
+      - microservice-net
+
+  user-service:
+    build: ./user-service
+    ports:
+      - "9001:9001"
+    networks:
+      - microservice-net
+
+  order-service:
+    build: ./order-service
+    ports:
+      - "9002:9002"
+    networks:
+      - microservice-net
+
+  inventory-service:
+    build: ./inventory-service
+    ports:
+      - "9003:9003"
+    networks:
+      - microservice-net
+
+  zipkin:
+    image: openzipkin/zipkin
+    ports:
+      - "9411:9411"
+    networks:
+      - microservice-net
+
+networks:
+  microservice-net:
+    driver: bridge
